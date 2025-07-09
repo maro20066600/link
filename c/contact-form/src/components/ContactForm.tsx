@@ -21,6 +21,10 @@ const GOVERNORATES = [
     'الوادي الجديد', 'مطروح'
 ];
 
+interface FormError {
+    message: string;
+}
+
 export default function ContactForm() {
     const [status, setStatus] = useState<{
         type: 'success' | 'error' | 'info' | null;
@@ -41,7 +45,7 @@ export default function ContactForm() {
         acceptTerms: false
     });
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         try {
@@ -87,11 +91,12 @@ export default function ContactForm() {
                 acceptTerms: false
             });
 
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error('Error:', error);
+            const errorMessage = error instanceof Error ? error.message : 'حدث خطأ أثناء إرسال البيانات. يرجى المحاولة مرة أخرى.';
             setStatus({ 
                 type: 'error', 
-                message: error.message || 'حدث خطأ أثناء إرسال البيانات. يرجى المحاولة مرة أخرى.'
+                message: errorMessage
             });
         }
     };
