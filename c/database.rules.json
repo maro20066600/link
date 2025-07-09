@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "submissions": {
+      ".read": false,
+      ".write": true,
+      "$submission": {
+        ".validate": "newData.hasChildren(['name', 'email', 'message', 'timestamp'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/)"
+        },
+        "message": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "timestamp": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+} 

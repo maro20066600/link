@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نموذج اتصال بسيط">
+    <title>نموذج الاتصال</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="contactForm">
+            <h2>نموذج الاتصال</h2>
+            <div class="form-group">
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">الرسالة:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">إرسال</button>
+        </form>
+        <div id="status" class="status"></div>
+    </div>
+
+    <!-- Firebase SDK Initialization -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB2HXfbTrtmQ3LPa3UBCQdUPiyKWvTMUjA",
+            authDomain: "ylycomp-cd565.firebaseapp.com",
+            databaseURL: "https://ylycomp-cd565-default-rtdb.firebaseio.com",
+            projectId: "ylycomp-cd565",
+            storageBucket: "ylycomp-cd565.firebasestorage.app",
+            messagingSenderId: "1014084412018",
+            appId: "1:1014084412018:web:85d9e4c034175175e358eb",
+            measurementId: "G-JKH0Y3X2K0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        // Make Firebase app instance available globally
+        window.firebaseApp = app;
+        window.firebaseDatabase = database;
+    </script>
+
+    <!-- Main Application Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html> 
